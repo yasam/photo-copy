@@ -36,10 +36,11 @@ def main():
 		for e in files[k]:
 			f = open(e["name"], 'rb')
 			filehash = hashlib.md5(f.read()).hexdigest()
+			f.close()
 			if filehash not in hashes:
 				hashes[filehash] = e["name"]
 			else:
-				print(e["name"]+" duplicates "+hashes[filehash])
+				print(e["name"]+" duplicates "+hashes[filehash] + " size:" + str(k) + " hash:"+filehash)
 
 if __name__ == "__main__":
 	main()
